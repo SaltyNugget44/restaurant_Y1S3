@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VK's Flavours</title>
+    <script>
+        function showForm(formId) {
+            document.getElementById('HomePageContent').style.display = 'none';
+            document.querySelector('.nav-buttons').style.display = 'none';
+            if (formId) {
+                document.getElementById(formId).style.display = 'flex';
+            } else {
+                document.getElementById('HomePageContent').style.display = 'block';
+                document.querySelector('.nav-buttons').style.display = 'flex';
+            }
+        }
+
+        function submitForm() {
+            document.getElementById('HomePageContent').style.display = 'block';
+            document.getElementById('SignUpForm').style.display = 'none';
+            
+            document.querySelector('.nav-buttons').style.display = 'none';
+            alert('Congratulations! You are a member now!'); /* This message will show after submitting the sign up form */
+        }
+
+        function submitFormTwo(){
+            document.getElementById('HomePageContent').style.display = 'block';
+           
+            document.getElementById('LogInForm').style.display = 'none';
+            document.querySelector('.nav-buttons').style.display = 'none';
+            alert('Log in success!'); /* This message will show after submitting the log in form */
+        }
+    </script>
+
+    <style>
+        .form_container {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 1);
+            color: #fff;
+            border-radius: 10px;
+        }
+
+        .form_container h1 {
+            text-align: center;
+        }
+
+        .form_group {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .form_group label {
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .form_group input,
+        .form_group select,
+        .form_group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #CCC;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .form_group textarea {
+            resize: vertical;
+        }
+
+        .form_group button {
+            width: 100%;
+            padding: 10px;
+            background-color: #1B1912;
+            color: #000;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .form_group button:hover {
+            background-color: #45A049;
+        }
+
+        form input[type="submit"] {
+            margin-top: 20px;
+        }
+
+        #HomePageContent {
+            display: block;
+        }
+
+        body {
+            font-family:'Calisto MT', serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            flex-direction: column;
+            background-color: #B69B52;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: #ADA693;
+            color: #000;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            top: 0;
+        }
+
+        .top_nav {
+            display: flex;
+            justify-content: flex-start;
+            width: 100%;
+            gap: 10px;
+            background-color: #9B9279;
+            }
+
+        .top_nav a {
+            color: #000;
+            padding: 10px;
+            text-decoration: none;
+            font-size: 18px;
+            margin-right: 45px;
+        }
+
+        .top_nav a:hover {
+            background-color: #464030;
+            color: black;
+        }
+
+        .nav-buttons {
+            position: absolute;
+            top: 20px;
+            right: 4%;
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-buttons button {
+            padding: 10px;
+            background-color: #B69B52;
+            color:#000;
+            border:#000;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family:'Calisto MT', serif;
+        }
+
+        .nav-buttons button:hover {
+            background-color: #464030;
+        }
+
+        .title-item {
+            font-family: 'Lora', serif; /* Applies the Lora font */
+            font-weight: 500; /* Sets the font weight to 500 (Medium) */
+            text-decoration: none; /* Removes underline from links */
+            /*color: inherit; /* Makes the link text inherit the color of its parent element */
+            margin-right: 80px; /* Adds space between the items */
+            font-size: 40px;
+            padding-top: 20px;
+            padding-left: 13px;
+            padding-bottom: 13px;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            background-color: #B69B52;
+            color:#000;
+            font-size: 18px;
+            margin: 0 auto;
+            padding: 0;
+            width: 100%;
+        }
+
+        .container_img {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            background-color: #B69B52;
+            color: #fff;
+            font-size: 18px;
+            background-image: url(RestaurantEnvironment.jpg);
+            height: auto;
+            width: 100vw;
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .container_title {
+            padding-top: 50px;
+            font-size: 100px;
+            text-align: center;
+            width: 100%;
+            color: #fff;
+        }
+
+        .container_subtitle {
+            font-size: 20px;
+            padding: 20px;
+            padding-bottom: 50px;
+            padding-top: 50px;
+            text-align: center;
+            width: 100%;
+            color: #fff;
+            font-family:'Calisto MT', serif;
+        }
+
+        .container_content {
+            font-size: 20px;
+            border-top: 2px solid #fff;
+            border-bottom: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #B69B52;
+        }
+
+        .content_subtitle{
+            font-size: 20px;
+            font-family:'Calisto MT', serif;
+            color:#000;
+        }
+
+        #introduction, #recommendations, #location {
+            display: flex;
+            flex-direction: row;
+            gap: 50px;
+            margin-left: 0;
+            margin-right: 30px;
+            text-align: center;
+            align-items: center;
+            text-align: justify;
+            line-height: 2.0;
+            padding: 0;
+            background-color: #B69B52;
+            overflow: hidden;
+        }
+
+        #introduction img {
+            width: 50vw;
+            max-width: 50%;
+            height: auto;
+            margin: 0;
+            padding: 0;
+        }
+
+        
+
+        #recommendations_img {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            background-color: #6B8E23;
+            color: #fff;
+            font-size: 18px;
+            background-image: url(Recommendation.jpg);
+            height: auto;
+            width: 100vw;
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .recommendations_grid {
+            padding: 50px;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+        }
+
+        .recommendations_grid_items {
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .recommendations_grid_items img {
+            width: 100%;
+            height: 280px;
+            border-radius: 8px;
+        }
+
+        .recommendations_grid_items p {
+            color: #000;
+            margin-top: 10px;
+            font-family:'Calisto MT', serif;
+        }
+
+        #location {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            background-color: #B69B52;
+            color:#000;
+            text-align: center;
+            font-size: 18px;
+            margin: 0;
+            padding: 0;
+            padding-bottom: 80px;
+            width: 100%;
+        } 
+
+        #location_img {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            background-color: #B69B52;
+            color: #fff;
+            font-size: 18px;
+            background-image: url(RestaurantLocation.jpeg);
+            height: auto;
+            width: 100vw;
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: top;
+            margin: 0;
+            padding: 0;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="SignUpForm" class="form_container">
+        <h2>Sign Up</h2>
+        <form onsubmit="submitForm(); return false;">
+            <div class="form_group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form_group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form_group">
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="">Select..</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="others">Others</option>
+                </select>
+            </div>
+            <div class="form_group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+
+    <div id="LogInForm" class="form_container">
+        <h2>Log In</h2>
+        <form onsubmit="submitFormTwo(); return false;">
+            <div class="form_group">
+                <label for="loginName">Name:</label>
+                <input type="text" id="loginName" name="loginName" required>
+            </div>
+            <div class="form_group">
+                <label for="loginPassword">Password:</label>
+                <input type="password" id="loginPassword" name="loginPassword" required>
+                <input type="submit" value="OK">
+            </div>
+        </form>
+    </div>
+
+    <div id="HomePageContent">
+        <header>
+            <div class="title-item" style="text-align: left;">VK's Flavours</div>
+            <div class="top_nav">
+                <a href="RestaurantHomePage.html">Home Page</a>
+                <a href="RestaurantMenu.html">Food Menu</a>
+                <a href="RestaurantReviews.html">Reviews</a>
+                <a href="RestaurantContactUs.html">Contact Us</a>
+            </div>
+            <div class="nav-buttons">
+                <button onclick="showForm('SignUpForm')">Sign Up</button>
+                <button onclick="showForm('LogInForm')">Log In</button>
+            </div>
+        </header>
+
+        <div class="container_img">
+            <h1 class="container_title">VK's Flavours</h1>
+            <div class="container_subtitle">Comfort&nbsp;&nbsp;|&nbsp;&nbsp;Delicious&nbsp;&nbsp;|&nbsp;&nbsp;Affordable</div>
+        </div>
+
+        <div class="container">
+            <div class="content">
+                <div id="introduction">
+                    <img src="VKLogo.jpg" alt="VKLogo">
+                    <div>
+                        <h2 style="padding-bottom: 10px; border-bottom: 2px solid #000;">VK's Flavours</h2>
+                        <p class="content_subtitle">
+                            VK's Flavours, where we serve both Chinese and Western cuisines,
+                            offers a delightful dining experience for every palate.
+                            Whether you're craving the hearty comfort of Western classics like juicy steaks and fresh pasta or the rich,
+                            authentic flavors of Chinese favorites such as savory dim sum and aromatic stir-fries, our menu has something for you.
+                            Our chefs use the finest ingredients to craft dishes that combine the diverse flavors of both worlds, creating a unique and memorable culinary journey.
+                            Our aim is to provide delicious food at an affordable price in a comfortable environment.
+                            Join us and start your culinary adventure today.</p>
+                    </div>
+                </div>
+
+                <div id="recommendations_img">
+                    <h1 class="container_title">Recommendations</h1>
+                    <div class="container_subtitle">Chef's Recommendations Just for You</div>
+                </div>
+
+                <div id="recommendations">
+                    <div class = "recommendations_grid">
+                        <div class = "recommendations_grid_items">
+                            <img src = "chicken wings.jpg" alt = "recommended1">
+                            <p>Chicken Wings</p>
+                        </div>
+                        <div class = "recommendations_grid_items">
+                            <img src = "crab cakes.jpg" alt = "recommended2">
+                            <p>Crab Cakes</p>
+                        </div>
+                        <div class = "recommendations_grid_items">
+                            <img src = "creemy prawn pasta.jpeg" alt = "recommended3">
+                            <p>Creamy Prawn Pasta</p>
+                        </div>
+                        <div class = "recommendations_grid_items">
+                            <img src = "fish and chips.jpeg" alt = "recommended4">
+                            <p>Fish and Chips</p>
+                        </div>
+                        <div class = "recommendations_grid_items">
+                            <img src = "lamb shank.jpg" alt = "recommended5">
+                            <p>Lamb Shank</p>
+                        </div>
+                        <div class = "recommendations_grid_items">
+                            <img src = "mac and cheese.jpeg" alt = "recommended6">
+                            <p>Mac and Cheese</p>
+                        </div>
+                        <div class = "recommendations_grid_items">
+                            <img src = "salad.jpg" alt = "recommended7">
+                            <p>Salad</p>
+                        </div>
+                        <div class = "recommendations_grid_items">
+                            <img src = "shrimp alfredo.jpeg" alt = "recommended8">
+                            <p>Shrimp Alfredo</p>
+                        </div>
+                        <div class = "recommendations_grid_items">
+                            <img src = "smoked salmon spag.jpeg" alt = "recommended9">
+                            <p>Smoked Salmon Spag</p>
+                        </div>
+                        <div class = "recommendations_grid_items">
+                            <img src = "Tomato bocconcini spag.jpeg" alt = "recommended10">
+                            <p>Tomato Bocconcini Spag</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="location_img">
+                    <h1 class="container_title">Location</h1>
+                    <div class="container_subtitle"> Experience a unique culinary journey at our restaurant, where every dish tells a story </div>
+                </div>
+
+                <div id="location">
+                    <h1 style="padding-top: 30px; padding-bottom: 10px; border-bottom: 2px solid #000;">VK's Flavours</h1>
+                    <p class="content_subtitle">123 Gourmet Avenue,<br>Foodie District,<br>Metropolis City,<br>12345,<br>Shah Alam, Selangor, <br> Malaysia.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500&display=swap" rel="stylesheet">
+
+    <style>
+
+    @font-face {
+        font-family: 'Calisto MT';
+        src: local('Calisto MT');
+    }
+
+    body {
+        background-color: #ADA693; /* Sets the background color of the body */
+        margin: 0; /* Removes default margin around the body */
+        padding: 20px; /* Adds padding to create space between content and the border */    
+        padding-left: 15px;
+        font-family: Arial, sans-serif; /* Sets the font family for the body text */
+    }
+
+    .title-container {
+        display: flex; /* Uses flexbox layout to arrange children in a row */
+        padding: 15px; /* Adds padding inside the container */
+        border-radius: 2px; /* Rounds the corners of the container */
+        border: none; /* Removes border from the container */
+        align-items: center; /* Vertically centers the items */
+    }
+
+    
+    .title-item a {
+        font-family: 'Lora', serif; /* Applies the Lora font */
+        font-weight: 500; /* Sets the font weight to 500 (Medium) */
+        text-decoration: none; /* Removes underline from links */
+        color: inherit; /* Makes the link text inherit the color of its parent element */
+        margin-right: 80px; /* Adds space between the items */
+        display: inline-block; /* Ensures the font size is applied properly */
+        font-size: 35px;
+    }
+
+
+
+    .title-item:not(:first-child) a {
+        font-size: 20px; /* Smaller size for Home and Menu */
+        line-height: 1; /* Adjusts the line height to prevent excessive spacing */
+        padding: 0; /* Removes additional padding to ensure alignment */
+        margin-top: 5px; /* Fine-tunes vertical alignment by moving the smaller items down */
+    }
+
+    .menu-item {
+        display: flex; /* Uses flexbox layout to arrange buttons in a row */
+        font-family: 'Calisto MT', serif; /* Applies the Calisto MT font */
+        font-size: 18px;
+        text-decoration: none;
+        color: inherit;
+        margin-bottom: 15px; /* Adds space below the menu item container */
+        background-color: #9B9279;
+    }
+
+    .menu-item a {
+        margin-right: 45px; /* Adds space between the menu items */
+        text-decoration: none; /* Removes underline from the links */
+        color: inherit; /* Inherits color from the parent element */
+        padding: 10px; /* Adds padding inside the menu item container */
+    }
+
+    .menu-item a:hover{
+        background-color: #464030;
+        color: black;
+    }
+
+    .menu-item a:last-child {
+        margin-right: 0; /* Removes right margin from the last menu item */
+    }
+
+
+    .content-container {
+        display: none; /* Hides sections by default */
+        height: auto; /* Allows the height to adjust based on content */
+        border: none; /* Removes border from the container */
+    }
+
+    .flex-container {
+        display: flex; /* Uses flexbox layout to arrange children in a row */
+        border-left: none; /* Adds a vertical line between the columns */
+        background-color: #C5B17A; /* Sets the background color of the container */
+        height: auto; /* Allows height to adjust based on content */
+        box-sizing: border-box; /* Includes padding and border in the element’s total width and height */
+    }
+
+    .header {
+        text-align: center;
+        margin-bottom: 20px; /* Adjust as needed for spacing */
+    }
+
+    .header h2 {
+        font-family: 'Calisto MT', serif;
+        font-size: 30px; /* Adjust font size as needed */
+        font-weight: bold; /* Makes the text bold */
+        color: #1B1912; /* Adjust color if needed */
+    }
+
+    .left-half {
+        flex: 1; /* Allows both columns to grow equally */
+        padding: 10px; /* Padding inside columns */
+        box-sizing: border-box; /* Includes padding in width/height calculations */
+        background-color: #C5B688;
+    }
+
+    .right-half {
+        flex: 1; /* Allows both columns to grow equally */
+        padding: 10px; /* Padding inside columns */
+        box-sizing: border-box; /* Includes padding in width/height calculations */
+        background-color: #C5B688;
+    }
+
+    .row {
+        display: flex; /* Layout children in a row */
+        align-items: center; /* Align items vertically in the center */
+        margin-bottom: 20px; /* Space below each row */
+    }
+
+    .box {
+        display: flex;
+        padding-left: 50px;
+        flex-direction: column; /* Ensures children are stacked vertically */
+        justify-content: flex-start; /* Aligns children to the start of the box */
+        align-items: flex-start; /* Aligns children to the start of the box horizontally */
+        flex: 1 1 47%; /* Adjust width and margin as needed */
+        margin: 5px; /* Adds space around each box */
+        height: 270px; /* Sets a fixed height for each box */
+        border: none; /* Removes border */
+        box-sizing: border-box; /* Includes padding and border in width and height calculations */
+        margin: 0 10px;
+    }
+
+    .food-name {
+        font-family: 'Calisto MT', serif; /* Applies the Calisto MT font */
+        font-size: 1.8em; /* Adjust size as needed */
+        color: #1B1912;  /* Western-inspired color */
+        margin: 0;
+    }
+
+    .ingredients {
+        font-family: 'Calisto MT', serif; /* Applies the Calisto MT font */
+        color: #1B1912;  /* Western-inspired color */
+        margin: 5px 0; /* Adjust as needed */
+        font-size: 14px; /* Adjust font size as needed */
+    }
+
+    .price {
+        margin: 10px 0; /* Adjust as needed */
+        font-weight: bold; /* Make the price stand out */
+        color: #1B1912; 
+    }
+
+    .promotion-price {
+        color: red;
+        text-decoration: line-through;
+        margin-right: 10px;
+
+    }
+
+        /* Keyframes for fade animation */
+    @keyframes fade {
+        0%, 100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.7;
+        }
+    }
+
+    /* Class to apply the fade animation */
+    .fade-animation {
+        animation: fade 0.3s;
+    }
+
+    .box-img {
+        width: 300px;
+        height: 200px;
+        object-fit: cover;
+        max-width: 100%;
+        align-self: flex-start;
+        border: 5px solid #9B9279; /* Change #ccc to your desired border color */
+        border-radius: 5px; /* Optional: adds rounded corners to the border */
+        cursor: pointer;
+    }
+
+    .box-img-drinks {
+        width: 200px; /* Makes the image responsive */
+        height: 300px; /* Makes the image responsive */
+        object-fit: cover; /* Ensures the image covers the area while maintaining its aspect ratio */
+        max-width: 100%; /* Ensures images do not exceed container width */
+        max-height: 100%; /* Ensures images do not exceed container height */
+        margin-bottom: 20px; /* Space below each image */
+        border: 5px solid #9B9279; /* Border color and width */
+        border-radius: 5px; /* Optional: rounded corners */
+        box-sizing: border-box; /* Includes border in the element’s total width and height */
+        margin-left: 50px;
+        cursor: pointer;
+    }
+
+    /*ORDER SECTION*/
+
+    .order-section {
+        
+        padding: 20px;
+        border: 1px solid #9B9279;
+        background-color: #C5B688;
+        margin: 20px;
+        display: none;
+    }
+
+    .order-list {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .order-item {
+        border-bottom: 1px solid #ddd;
+        padding: 10px 0;
+        position: relative;
+    }
+
+    .order-item p {
+        margin: 0;
+    }
+
+    .order-item p strong {
+        font-size: 16px;
+    }
+
+    .order-total {
+        font-weight: bold;
+        margin-top: 10px;
+        text-align: right;
+    }
+
+
+    .delete-button {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 5px 10px;
+        background-color: #e74c3c; /* Red background for delete button */
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .delete-button:hover {
+        background-color: #c0392b; /* Darker red on hover */
+    }
+
+    .confirm-button {
+        margin-top: 10px;
+        padding: 10px 20px;
+        background-color: #4CAF50; /* Green background */
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .confirm-button:hover {
+        background-color: #45a049; /* Darker green on hover */
+    }
+
+/* Add these styles to your CSS file */
+    #order-success-popup {
+        opacity: 0;
+        transition: opacity 1s;
+        background-color: #ADA693;
+        border-color: #1B1912;
+        border-radius: 5px;
+        padding: 20px;
+        font-family: 'Calisto MT', serif;
+        font-size: 23px;
+    }
+
+    #order-success-popup.fade-in {
+        opacity: 1;
+    }
+
+    #order-success-popup.fade-out {
+        opacity: 0;
+    }
+
+    </style>
+    
+</head>
+<body>
+    <div class="title-container">
+        <div class="title-item"><a href="RestaurantHomePage.html">VK's Flavours</a></div>
+        <div class="title-item"><a href="RestaurantHomePage.html">Home</a></div>
+        <div class="title-item"><a>Menu</a></div>
+    </div>
+    
+
+    <div class="menu-item">
+        <a href="#" onclick="showSection('recommendation')">Recommendation</a>
+        <a href="#" onclick="showSection('Promotion')">Promotion</a>
+        <a href="#" onclick="showSection('main-dish')">Main Dish</a>
+        <a href="#" onclick="showSection('sides')">Sides</a>
+        <a href="#" onclick="showSection('drinks')">Drinks</a>
+        <a href="#" onclick="showSection('orders')">Orders</a>
+    </div>
+    
+    
+
+    <div id="recommendation" class="content-container">
+    <div class="flex-container">
+        <div class="left-half">
+            <div class="row">
+                <div class="box">
+                    <img src="shrimp alfredo.png" alt="Shrimp Alfredo" class="box-img">
+                </div>
+                <div class="box">
+                    <h3 class="food-name">Shrimp Alfredo</h3>
+                    <p class="ingredients">Ingredients: fettuccine noodles, butter, heavy cream, parmesan cheese, salt, black pepper, shrimp, garlic, and parsley</p>
+                    <h4 class="price">RM 18.00</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="box">
+                    <img src="smoked salmon spag.jpeg" alt="Smoked Salmon Spaghetti" class="box-img">
+                </div>
+                <div class="box">
+                    <h3 class="food-name">Smoked Salmon Spaghetti</h3>
+                    <p class="ingredients">Ingredients: spaghetti, smoked salmon, capers, lemon, garlic, and dill</p>
+                    <h4 class="price">RM 18.00</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="box">
+                    <img src="mac and cheese.jpeg" alt="Mac and Cheese" class="box-img">
+                </div>
+                <div class="box">
+                    <h3 class="food-name">Mac and Cheese</h3>
+                    <p class="ingredients">Ingredients: macaroni, cheddar cheese, milk, butter, and breadcrumbs</p>
+                    <h4 class="price">RM 15.00</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="box">
+                    <img src="fish and chips.jpeg" alt="Fish and Chips" class="box-img">
+                </div>
+                <div class="box">
+                    <h3 class="food-name">Fish and Chips</h3>
+                    <p class="ingredients">Ingredients: fish fillets, potatoes, flour, egg, breadcrumbs, and tartar sauce</p>
+                    <h4 class="price">RM 20.00</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="box">
+                    <img src="chicken wings.jpg" alt="Chicken Wings" class="box-img">
+                </div>
+                <div class="box">
+                    <h3 class="food-name">Chicken Wings</h3>
+                    <p class="ingredients">Ingredients: chicken wings, hot sauce, butter, garlic, and spices</p>
+                    <h4 class="price">RM 12.00</h4>
+                </div>
+            </div>
+        </div>
+        <div class="right-half">
+            <div class="row">
+                <div class="box">
+                    <img src="creemy prawn pasta.jpeg" alt="Creamy Prawn Pasta" class="box-img">
+                </div>
+                <div class="box">
+                    <h3 class="food-name">Creamy Prawn Pasta</h3>
+                    <p class="ingredients">Ingredients: pasta, prawns, cream, garlic, and parsley</p>
+                    <h4 class="price">RM 18.00</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="box">
+                    <img src="lamb shank.jpg" alt="Lamb Shank" class="box-img">
+                </div>
+                <div class="box">
+                    <h3 class="food-name">Lamb Shank</h3>
+                    <p class="ingredients">Ingredients: lamb shank, red wine, rosemary, garlic, and carrots</p>
+                    <h4 class="price">RM 25.00</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="box">
+                    <img src="Tomato bocconcini spag.jpeg" alt="Tomato Bocconcini Spaghetti" class="box-img">
+                </div>
+                <div class="box">
+                    <h3 class="food-name">Tomato Bocconcini Spaghetti</h3>
+                    <p class="ingredients">Ingredients: spaghetti, cherry tomatoes, bocconcini cheese, basil, and olive oil</p>
+                    <h4 class="price">RM 17.00</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="box">
+                    <img src="crab cakes.jpg" alt="Crab Cakes" class="box-img">
+                </div>
+                <div class="box">
+                    <h3 class="food-name">Crab Cakes</h3>
+                    <p class="ingredients">Ingredients: crab meat, breadcrumbs, mayonnaise, mustard, and lemon</p>
+                    <h4 class="price">RM 22.00</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="box">
+                    <img src="salad.jpg" alt="Salad" class="box-img">
+                </div>
+                <div class="box">
+                    <h3 class="food-name">Salad</h3>
+                    <p class="ingredients">Ingredients: lettuce, tomatoes, cucumbers, carrots, and vinaigrette</p>
+                    <h4 class="price">RM 10.00</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>  
+
+    <div id="Promotion" class="content-container">
+        <div class="header">
+            <h2>For Members Only</h2>
+        </div>
+        <div class="flex-container">
+            <div class="left-half">
+                <div class="row">
+                    <div class="box">
+                        <img src="Beef_wellington.jpeg" alt="Beef Wellington" class="box-img">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Beef Wellington</h3>
+                        <p class="ingredients">Ingredients: beef tenderloin, puff pastry, mushrooms, prosciutto, and pâté</p>
+                        <div class ="promotion-price">RM 70.00</div>
+                        <h4 class="price">RM 55.00</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box">
+                        <img src="Lobster Thermidor.jpeg" alt="Lobster Thermidor" class="box-img">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Lobster Thermidor</h3>
+                        <p class="ingredients">Ingredients: lobster, butter, flour, milk, cheese, egg yolks, and mustard</p>
+                        <div class ="promotion-price">RM 72.00</div>
+                        <h4 class="price">RM 52.00</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box">
+                        <img src="king_crab_legs_with_lemon.jpeg" alt="King Crab Legs with Lemon" class="box-img">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">King Crab Legs with Lemon</h3>
+                        <p class="ingredients">Ingredients: king crab legs, lemon, butter, garlic, and herbs</p>
+                        <div class ="promotion-price">RM 68.00</div>
+                        <h4 class="price">RM 50.00</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="right-half">
+                <div class="row">
+                    <div class="box">
+                        <img src="steak burger.jpeg" alt="Steak Burger" class="box-img">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Steak Burger</h3>
+                        <p class="ingredients">Ingredients: beef steak patty, bun, lettuce, tomato, cheese, and sauce</p>
+                        <div class ="promotion-price">RM 43.00</div>
+                        <h4 class="price">RM 32.00</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box">
+                        <img src="burrito.jpeg" alt="Burrito" class="box-img">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Burrito</h3>
+                        <p class="ingredients">Ingredients: tortilla, beef, rice, beans, cheese, and salsa</p>
+                        <div class ="promotion-price">RM 38.00</div>
+                        <h4 class="price">RM 28.00</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box">
+                        <img src="tacos.jpeg" alt="Tacos" class="box-img">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Tacos</h3>
+                        <p class="ingredients">Ingredients: taco shells, ground beef, lettuce, tomato, cheese, and salsa</p>
+                        <div class ="promotion-price">RM 32.00</div>
+                        <h4 class="price">RM 24.00</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+    <div id="main-dish" class="content-container">
+        <div class="flex-container">
+            <div class="left-half">
+                <div class="row">
+                    <div class="box">
+                        <img src="cherry tomato spag.jpeg" alt="Cherry Tomato Spaghetti" class="box-img">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Cherry Tomato Spaghetti</h3>
+                        <p class="ingredients">Ingredients: spaghetti, cherry tomatoes, garlic, olive oil, and basil</p>
+                        <h4 class="price">RM 15.00</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box">
+                        <img src="chicken alfredo pasta.jpeg" alt="Chicken Alfredo Pasta" class="box-img">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Chicken Alfredo Pasta</h3>
+                        <p class="ingredients">Ingredients: fettuccine noodles, chicken, butter, heavy cream, parmesan cheese, salt, black pepper, and garlic</p>
+                        <h4 class="price">RM 18.00</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box">
+                        <img src="creemy prawn pasta.jpeg" alt="Creamy Prawn Pasta" class="box-img">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Creamy Prawn Pasta</h3>
+                        <p class="ingredients">Ingredients: pasta, prawns, cream, garlic, and parsley</p>
+                        <h4 class="price">RM 18.00</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box">
+                        <img src="mac and cheese.jpeg" alt="Mac and Cheese" class="box-img">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Mac and Cheese</h3>
+                        <p class="ingredients">Ingredients: macaroni, cheddar cheese, milk, butter, and breadcrumbs</p>
+                        <h4 class="price">RM 15.00</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box">
+                        <img src="shrimp alfredo.png" alt="Shrimp Alfredo" class="box-img">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Shrimp Alfredo</h3>
+                        <p class="ingredients">Ingredients: fettuccine noodles, butter, heavy cream, parmesan cheese, salt, black pepper, shrimp, garlic, and parsley</p>
+                        <h4 class="price">RM 18.00</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box">
+                        <img src="smoked salmon spag.jpeg" alt="Smoked Salmon Spaghetti" class="box-img">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Smoked Salmon Spaghetti</h3>
+                        <p class="ingredients">Ingredients: spaghetti, smoked salmon, capers, lemon, garlic, and dill</p>
+                        <h4 class="price">RM 18.00</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box">
+                        <img src="bacon steak.jpg" alt="Bacon Steak" class="box-img">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Bacon Steak</h3>
+                        <p class="ingredients">Ingredients: bacon-wrapped steak, salt, black pepper, and rosemary</p>
+                        <h4 class="price">RM 28.00</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box">
+                        <img src="caramelizard duck cutlets.jpg" alt="Caramelized Duck Cutlets" class="box-img">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Caramelized Duck Cutlets</h3>
+                        <p class="ingredients">Ingredients: duck cutlets, caramel sauce, garlic, and ginger</p>
+                        <h4 class="price">RM 32.00</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box">
+                        <img src="chicken chop.jpg" alt="Chicken Chop" class="box-img">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Chicken Chop</h3>
+                        <p class="ingredients">Ingredients: chicken thighs, soy sauce, garlic, and black pepper</p>
+                        <h4 class="price">RM 18.00</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box">
+                        <img src="fish and chips.jpeg" alt="Fish and Chips" class="box-img">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Fish and Chips</h3>
+                        <p class="ingredients">Ingredients: fish fillets, potatoes, flour, egg, breadcrumbs, and tartar sauce</p>
+                        <h4 class="price">RM 20.00</h4>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-half">
+                <div class="row">
+                    <div class="box">
+                        <img src="spag aglio e olio.jpeg" alt="Spaghetti Aglio e Olio" class="box-img">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Spaghetti Aglio e Olio</h3>
+                        <p class="ingredients">Ingredients: spaghetti, garlic, olive oil, red pepper flakes, and parsley</p>
+                        <h4 class="price">RM 15.00</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box">
+                        <img src="spag carbonara.jpeg" alt="Spaghetti Carbonara" class="box-img">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Spaghetti Carbonara</h3>
+                        <p class="ingredients">Ingredients: spaghetti, eggs, pancetta, parmesan cheese, and black pepper</p>
+                        <h4 class="price">RM 18.00</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box">
+                        <img src="spaghetti bolognese.jpeg" alt="Spaghetti Bolognese" class="box-img">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Spaghetti Bolognese</h3>
+                        <p class="ingredients">Ingredients: spaghetti, ground beef, tomatoes, onions, carrots, and celery</p>
+                        <h4 class="price">RM 18.00</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box">
+                        <img src="spaghetti-marinara_1980x1320-127850-1.jpeg" alt="Spaghetti Marinara" class="box-img">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Spaghetti Marinara</h3>
+                        <p class="ingredients">Ingredients: spaghetti, mixed seafood, tomatoes, garlic, and olive oil</p>
+                        <h4 class="price">RM 20.00</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box">
+                        <img src="Tomato bocconcini spag.jpeg" alt="Tomato Bocconcini Spaghetti" class="box-img">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Tomato Bocconcini Spaghetti</h3>
+                        <p class="ingredients">Ingredients: spaghetti, cherry tomatoes, bocconcini cheese, basil, and olive oil</p>
+                        <h4 class="price">RM 17.00</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box">
+                        <img src="tuna spinash spag.jpeg" alt="Tuna Spinach Spaghetti" class="box-img">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Tuna Spinach Spaghetti</h3>
+                        <p class="ingredients">Ingredients: spaghetti, tuna, spinach, garlic, and olive oil</p>
+                        <h4 class="price">RM 20.00</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box">
+                        <img src="pumpkin bacon spag.jpeg" alt="Pumpkin Bacon Spaghetti" class="box-img">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Pumpkin Bacon Spaghetti</h3>
+                        <p class="ingredients">Ingredients: spaghetti, pumpkin, bacon, garlic, and olive oil</p>
+                        <h4 class="price">RM 20.00</h4>
+                    </div>
+                </div>                
+                <div class="row">
+                    <div class="box">
+                        <img src="lamb chop.jpg" alt="Lamb Chop" class="box-img">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Lamb Chop</h3>
+                        <p class="ingredients">Ingredients: lamb chops, rosemary, garlic, and olive oil</p>
+                        <h4 class="price">RM 35.00</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box">
+                        <img src="lamb shank.jpg" alt="Lamb Shank" class="box-img">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Lamb Shank</h3>
+                        <p class="ingredients">Ingredients: lamb shank, rosemary, garlic, and olive oil</p>
+                        <h4 class="price">RM 38.00</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box">
+                        <img src="steak and fries.jpeg" alt="Steak and Fries" class="box-img">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Steak and Fries</h3>
+                        <p class="ingredients">Ingredients: steak, potatoes, garlic, and olive oil</p>
+                        <h4 class="price">RM 28.00</h4>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <div id="sides" class="content-container">
+        <div class="flex-container">
+            <div class="left-half">
+                <div class="row">
+                    <div class="box">
+                        <img src="bacons.jpg" alt="Bacon" class="box-img">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Bacon</h3>
+                        <p class="ingredients">Ingredients: crispy bacon strips</p>
+                        <h4 class="price">RM 15.00</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box">
+                        <img src="chicken wings.jpg" alt="Chicken Wings" class="box-img">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Chicken Wings</h3>
+                        <p class="ingredients">Ingredients: chicken wings, hot sauce, butter, garlic, and spices</p>
+                        <h4 class="price">RM 12.00</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box">
+                        <img src="crab cakes.jpg" alt="Crab Cakes" class="box-img">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Crab Cakes</h3>
+                        <p class="ingredients">Ingredients: crab meat, breadcrumbs, mayonnaise, mustard, and lemon</p>
+                        <h4 class="price">RM 22.00</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box">
+                        <img src="fried cheese sticks.jpg" alt="Fried Cheese Sticks" class="box-img">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Fried Cheese Sticks</h3>
+                        <p class="ingredients">Ingredients: cheese sticks, breading, and marinara sauce</p>
+                        <h4 class="price">RM 14.00</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box">
+                        <img src="fried squid.jpg" alt="Fried Squid" class="box-img">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Fried Squid</h3>
+                        <p class="ingredients">Ingredients: squid, flour, seasoning, and dipping sauce</p>
+                        <h4 class="price">RM 18.00</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box">
+                        <img src="coleslaw.png" alt="Coleslaw" class="box-img">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Coleslaw</h3>
+                        <p class="ingredients">Ingredients: shredded cabbage, carrots, and coleslaw dressing</p>
+                        <h4 class="price">RM 8.00</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="right-half">
+                <div class="row">
+                    <div class="box">
+                        <img src="fries.jpg" alt="Fries" class="box-img">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Fries</h3>
+                        <p class="ingredients">Ingredients: potato fries, salt</p>
+                        <h4 class="price">RM 10.00</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box">
+                        <img src="hashbrown.jpg" alt="Hash Browns" class="box-img">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Hash Browns</h3>
+                        <p class="ingredients">Ingredients: grated potatoes, seasoning, and oil</p>
+                        <h4 class="price">RM 12.00</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box">
+                        <img src="mashed potatoes.jpg" alt="Mashed Potatoes" class="box-img">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Mashed Potatoes</h3>
+                        <p class="ingredients">Ingredients: potatoes, butter, milk, and seasoning</p>
+                        <h4 class="price">RM 15.00</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box">
+                        <img src="onion rings.jpg" alt="Onion Rings" class="box-img">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Onion Rings</h3>
+                        <p class="ingredients">Ingredients: onion, batter, and seasoning</p>
+                        <h4 class="price">RM 12.00</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box">
+                        <img src="wedges.jpg" alt="Potato Wedges" class="box-img">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Potato Wedges</h3>
+                        <p class="ingredients">Ingredients: potato wedges, seasoning, and oil</p>
+                        <h4 class="price">RM 12.00</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box">
+                        <img src="salad.jpg" alt="Salad" class="box-img">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Salad</h3>
+                        <p class="ingredients">Ingredients: lettuce, tomatoes, cucumbers, carrots, and vinaigrette</p>
+                        <h4 class="price">RM 10.00</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <div id="drinks" class="content-container">
+        <div class="flex-container">
+            <div class="left-half">
+                <div class="row">
+                    <div class="box">
+                        <img src="coke.jpg" alt="Coke" class="box-img-drinks">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Coke</h3>
+                        <h4 class="price">RM 5.00</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box">
+                        <img src="pepsi.jpg" alt="Pepsi" class="box-img-drinks">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Pepsi</h3>
+                        <h4 class="price">RM 5.00</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box">
+                        <img src="apple.jpg" alt="Apple Juice" class="box-img-drinks">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Apple Juice</h3>
+                        <h4 class="price">RM 6.00</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box">
+                        <img src="cranberry.jpg" alt="Cranberry Juice" class="box-img-drinks">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Cranberry Juice</h3>
+                        <h4 class="price">RM 6.00</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box">
+                        <img src="honey lemon.jpg" alt="Honey Lemon Drink" class="box-img-drinks">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Honey Lemon Drink</h3>
+                        <h4 class="price">RM 7.00</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="right-half">
+                <div class="row">
+                    <div class="box">
+                        <img src="sprite.png" alt="Sprite" class="box-img-drinks">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Sprite</h3>
+                        <h4 class="price">RM 5.00</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box">
+                        <img src="orange.jpg" alt="Orange Juice" class="box-img-drinks">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Orange Juice</h3>
+                        <h4 class="price">RM 6.00</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box">
+                        <img src="watermelon.png" alt="Watermelon Juice" class="box-img-drinks">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Watermelon Juice</h3>
+                        <h4 class="price">RM 6.00</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box">
+                        <img src="lemon.jpg" alt="Lemon Juice" class="box-img-drinks">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Lemon Juice</h3>
+                        <h4 class="price">RM 6.00</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box">
+                        <img src="mineral water.png" alt="Mineral Water" class="box-img-drinks">
+                    </div>
+                    <div class="box">
+                        <h3 class="food-name">Mineral Water</h3>
+                        <h4 class="price">RM 4.00</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <div id="orders" class="order-section" class="content-container">
+        <ul class="order-list">
+            <!-- Order items will be dynamically added here -->
+        </ul>
+        <p class="order-total">Total: RM0.00</p>
+        <button id="confirm-order" class="confirm-button">Confirm Order</button>
+        <p id="order-success-message" class="success-message" style="display: none;">You have successfully made your order!</p>
+    </div>
+    
+    <div id="order-success-popup">
+        You have successfully made your orders
+    </div>
+    
+    
+    
+    
+    
+    <script>
+    
+    document.addEventListener('DOMContentLoaded', () => {
+    // Show Recommendation by default on page load
+    showSection('recommendation');
+    
+    // Add event listeners to food images
+    const images = document.querySelectorAll('.box-img, .box-img-drinks'); // Include both classes
+    images.forEach(image => {
+        image.addEventListener('click', () => {
+            // Apply fade animation 
+            image.classList.add('fade-animation');
+            setTimeout(() => {
+                image.classList.remove('fade-animation');
+            }, 1000); // Duration of the animation in milliseconds
+    
+            // Get the parent row
+            const row = image.closest('.row');
+            
+            // Find the food name and price in the same row
+            const foodName = row.querySelector('.food-name').textContent;
+            const priceText = row.querySelector('.price').textContent;
+            const price = parseFloat(priceText.replace('RM ', '')); // Adjust to 'RM ' to match your price format
+            
+            addToOrder(foodName, price);
+        });
+    });
+    
+    // Confirm Order button click event
+    const confirmButton = document.getElementById('confirm-order');
+    confirmButton.addEventListener('click', () => {
+        const orderList = document.querySelector('.order-list');
+        if (orderList.children.length > 0) { // Check if there are items in the order list
+            // Clear the order list
+            orderList.innerHTML = '';
+    
+            // Hide the total and confirm button
+            document.querySelector('.order-total').style.display = 'none';
+            confirmButton.style.display = 'none';
+    
+            // Show success message
+            const successMessage = document.getElementById('order-success-message');
+            successMessage.style.display = 'block';
+    
+            // Show popup message
+            const popup = document.getElementById('order-success-popup');
+            popup.style.display = 'block';
+            popup.classList.add('fade-in');
+    
+            // Hide popup after 3 seconds with fade-out effect
+            setTimeout(() => {
+                popup.classList.remove('fade-in');
+                popup.classList.add('fade-out');
+                setTimeout(() => {
+                    popup.style.display = 'none';
+                    popup.classList.remove('fade-out'); // Clean up
+                }, 1000); // Duration of the fade-out effect
+            }, 3000); // Display time before fading out
+    
+            // Reset order section
+            resetOrderSection();
+        }
+    });
+    });
+    
+    // Function to show a specific section
+    function showSection(sectionId) {
+    const sections = document.querySelectorAll('.content-container, .order-section');
+    sections.forEach(section => {
+        if (section.id === sectionId || (section.classList.contains('order-section') && sectionId === 'order')) {
+            section.style.display = 'block';
+    
+            // If switching to the order section, ensure it's not reset
+            if (sectionId === 'order') {
+                document.getElementById('confirm-order').style.display = 'block';
+                document.getElementById('order-success-message').style.display = 'none';
+            }
+        } else {
+            section.style.display = 'none';
+        }
+    });
+    }
+    
+    // Function to reset the order section
+    function resetOrderSection() {
+    // Clear the order list
+    const orderList = document.querySelector('.order-list');
+    orderList.innerHTML = '';
+    
+    // Reset the total and show the confirm button
+    const orderTotal = document.querySelector('.order-total');
+    orderTotal.style.display = 'block';
+    orderTotal.textContent = 'Total: RM0.00';
+    
+    const confirmButton = document.getElementById('confirm-order');
+    confirmButton.style.display = 'block';
+    confirmButton.disabled = true; // Initially disabled when resetting
+    confirmButton.style.opacity = '0.5'; // Optional: visually indicate it's disabled
+    
+    // Hide the success message
+    const successMessage = document.getElementById('order-success-message');
+    successMessage.style.display = 'none';
+    }
+    
+    
+    // Function to add an item to the order list
+    function addToOrder(foodName, price) {
+    // Get the order list element
+    const orderList = document.querySelector('.order-list');
+    
+    // Create a new order item element
+    const orderItem = document.createElement('li');
+    orderItem.classList.add('order-item');
+    
+    // Set the inner HTML of the order item with a delete button
+    orderItem.innerHTML = `
+        <p><strong>${foodName}</strong></p>
+        <p>Price: RM${price.toFixed(2)}</p>
+        <button class="delete-button">Delete</button>
+    `;
+    
+    // Append the order item to the order list
+    orderList.appendChild(orderItem);
+    
+    // Add event listener for the delete button
+    const deleteButton = orderItem.querySelector('.delete-button');
+    deleteButton.addEventListener('click', () => {
+        orderItem.remove();
+        updateOrderTotal();
+    });
+    
+    // Update the order total
+    updateOrderTotal();
+    }
+    
+    
+    // Function to update the total amount in the order section
+    function updateOrderTotal() {
+    const orderItems = document.querySelectorAll('.order-item');
+    let total = 0;
+    
+    orderItems.forEach(item => {
+        const priceText = item.querySelector('p').nextElementSibling.textContent;
+        const price = parseFloat(priceText.replace('Price: RM', ''));
+        total += price;
+    });
+    
+    const orderTotal = document.querySelector('.order-total');
+    orderTotal.textContent = `Total: RM${total.toFixed(2)}`;
+    checkOrderEmpty(); // Check if the order list is empty and update confirm button state
+    }
+    
+    
+    
+    // Function to check if the order list is empty
+    function checkOrderEmpty() {
+    const orderList = document.querySelector('.order-list');
+    const confirmButton = document.getElementById('confirm-order');
+    
+    if (orderList.children.length === 0) {
+        confirmButton.disabled = true;
+        confirmButton.style.opacity = '0.5'; // Optional: visually indicate it's disabled
+    } else {
+        confirmButton.disabled = false;
+        confirmButton.style.opacity = '1'; // Optional: visually indicate it's enabled
+    }
+    }
+    
+    
+    
+    
+    </script>    
+</html>
